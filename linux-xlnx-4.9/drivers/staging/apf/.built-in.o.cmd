@@ -1,0 +1,1 @@
+cmd_drivers/staging/apf/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/staging/apf/built-in.o drivers/staging/apf/xlnk-config.o drivers/staging/apf/xlnk.o drivers/staging/apf/xlnk-eng.o drivers/staging/apf/xilinx-dma-apf.o 

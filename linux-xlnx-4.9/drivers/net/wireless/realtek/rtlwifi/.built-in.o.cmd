@@ -1,0 +1,1 @@
+cmd_drivers/net/wireless/realtek/rtlwifi/built-in.o :=  arm-linux-gnueabihf-ld -EL    -r -o drivers/net/wireless/realtek/rtlwifi/built-in.o drivers/net/wireless/realtek/rtlwifi/rtlwifi.o drivers/net/wireless/realtek/rtlwifi/rtl_usb.o drivers/net/wireless/realtek/rtlwifi/rtl8192c/built-in.o drivers/net/wireless/realtek/rtlwifi/rtl8192cu/built-in.o 
