@@ -10,14 +10,13 @@ Attitude estimation, flight control, navigation are implemented by ArduPilot fli
 * Developers can push questions to DevKit user forum at: [http://dev.robsense.com]
 
 
-Below shows how to build ArduCopter for the PhenixPro Devkit V2.0
-cd PhenixPro_Devkit_V2.0/TrackingDemo_DevkitPro_linux
-./waf configure --board rst_zynq
-./waf copter
-
 
 Next will show you a simple way to build software for PhenixPro Devkit V2.0
-u-boot
+
+
+
+* u-boot
+
 Get u-boot source code from github:
 git clone https://github.com/RobSenseTech/PhenixPro_Devkit_V2.0
 cd PhenixPro_Devkit_V2.0/uboot-xlnx
@@ -29,13 +28,23 @@ Complie u-booot:
 make ARCH=arm CROSS_COMPILE=arm-xilinx-linux-gnueabi- -j8
 Last step, rename u-boot to u-boot.elf.And you can use it to create BOOT.bin by SDK.
 
-Linux Kernel
+
+
+* Linux Kernel
+
 Enter the linux kernel directory:
 cd PhenixPro_Devkit_V2.0/linux-xlnx-4.9
 
 Compile kernel:
-make ARCH=arm xilinx_zynq_defconfig
+cp arch/arm/boot/phenixpro-devkit-config/devkit-config .config
+
+make ARCH=arm CROSS_COMPILE=arm-xilinx-linux-gnueabi- menuconfig
+  Device Drivers  --->
+    [*]Pulse-Width Modulation (PWM) Support  --->
+    <*>   Xilinx PWM support
+
 make ARCH=arm UIMAGE_LOADADDR=0x8000 CROSS_COMPILE=arm-xilinx-linux-gnueabi- uImage -j8
+
 
 Linux Devicetree
 Generate dtb file with command
